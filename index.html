@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahabaj Pirjade | AI/ML Portfolio</title>
+  <meta name="description" content="Portfolio of Shahabaj Pirjade, showcasing AI, ML, data science, and software engineering work." />
+  <style>
+    :root {
+      --bg-1: #050816;
+      --bg-2: #0b1120;
+      --bg-3: #101827;
+      --panel: rgba(15, 23, 42, 0.72);
+      --panel-strong: rgba(15, 23, 42, 0.92);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e2e8f0;
+      --muted: #9fb1c9;
+      --cyan: #7dd3fc;
+      --blue: #60a5fa;
+      --violet: #a78bfa;
+      --teal: #67e8f9;
+      --green: #34d399;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.2), transparent 20%),
+        radial-gradient(circle at 80% 10%, rgba(167, 139, 250, 0.22), transparent 20%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 35%, var(--bg-3) 100%);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 8, 22, 0.45);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: #f8fafc;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: #071322;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 15px 35px rgba(125, 211, 252, 0.25);
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 70px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 46px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.72rem;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      margin-bottom: 16px;
+      text-shadow: 0 10px 30px rgba(96, 165, 250, 0.25);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.2rem, 2.4vw, 2rem);
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy p {
+      max-width: 640px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 26px;
+      min-width: 170px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 18px 30px rgba(96, 165, 250, 0.22);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: #071322;
+    }
+
+    .button.secondary {
+      background: rgba(15, 23, 42, 0.45);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .stat {
+      min-width: 110px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      margin-bottom: 4px;
+      color: #f8fafc;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .scene-wrap {
+      perspective: 1300px;
+      position: relative;
+    }
+
+    .scene-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.72));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .scene-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.18), rgba(167, 139, 250, 0.18));
+      transform: translateZ(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .profile-panel {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 14, 25, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 22px;
+      padding: 18px;
+      transform: translateZ(32px);
+    }
+
+    .avatar {
+      height: 180px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.28), rgba(167, 139, 250, 0.18), rgba(103, 232, 249, 0.1));
+      border: 1px solid rgba(125, 211, 252, 0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.4rem;
+      font-weight: 800;
+      color: var(--cyan);
+      transform: translateZ(35px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 28px rgba(125,211,252,0.12);
+      margin-bottom: 18px;
+    }
+
+    .profile-panel h3 {
+      font-size: 1.36rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-panel p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .mini-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(148, 163, 184, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.08);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-size: 0.9rem;
+      transform: translateZ(18px);
+    }
+
+    .mini-list span { color: var(--muted); }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.7;
+      animation: drift 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .orb.one {
+      width: 240px; height: 240px; background: rgba(96, 165, 250, 0.14); top: 60px; right: 90px;
+    }
+    .orb.two {
+      width: 300px; height: 300px; background: rgba(167, 139, 250, 0.12); bottom: 50px; right: 250px; animation-delay: 2s;
+    }
+    .orb.three {
+      width: 180px; height: 180px; background: rgba(103, 232, 249, 0.12); left: 10%; top: 25%; animation-delay: 4s;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .about-grid,
+    .projects-grid,
+    .timeline-grid,
+    .contact-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .about-grid { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
+    .projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .contact-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.15), rgba(167, 139, 250, 0.05), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px) rotateX(4deg) rotateY(-4deg);
+      border-color: rgba(125, 211, 252, 0.35);
+      box-shadow: 0 28px 60px rgba(15, 23, 42, 0.46);
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 20px;
+    }
+
+    .glass-card p,
+    .project-card p,
+    .timeline-item p {
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+    }
+
+    .chip {
+      background: rgba(125, 211, 252, 0.08);
+      border: 1px solid rgba(125, 211, 252, 0.2);
+      color: var(--cyan);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) rotateX(5deg) rotateY(-5deg);
+      border-color: rgba(167, 139, 250, 0.4);
+      box-shadow: 0 28px 60px rgba(10, 15, 30, 0.52);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(96, 165, 250, 0.12), rgba(167, 139, 250, 0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      background: rgba(167, 139, 250, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      color: #ddd6fe;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card ul {
+      list-style: disc;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-link {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--cyan);
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-link:hover { color: #f8fafc; }
+
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .skills-panel {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.08), rgba(125, 211, 252, 0.04), transparent);
+      pointer-events: none;
+    }
+
+    .skills-panel h3 {
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-pills span {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.18);
+      background: rgba(52, 211, 153, 0.08);
+      color: #a7f3d0;
+      font-weight: 700;
+      font-size: 0.83rem;
+    }
+
+    .timeline-item {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .timeline-item .year {
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-card,
+    .contact-info {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card p { color: var(--muted); margin-bottom: 18px; }
+    .contact-link-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link-list a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(148, 163, 184, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.08);
+      color: var(--text);
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-link-list a:hover {
+      transform: translateX(2px);
+      border-color: rgba(125, 211, 252, 0.22);
+    }
+
+    .site-footer {
+      padding: 24px 0 42px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(5, 8, 22, 0.7);
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: rotateX(8deg) rotateY(-10deg) translateY(0); }
+      50% { transform: rotateX(10deg) rotateY(-5deg) translateY(-10px); }
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0,0,0) scale(1); }
+      100% { transform: translate3d(20px, -18px, 0) scale(1.1); }
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .projects-grid,
+      .timeline-grid,
+      .skills-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding-top: 42px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section { padding: 80px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">Shahabaj Pirjade</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="nav-cta">Let’s Talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+      <div class="orb three"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">AI / ML Engineer</span>
+          <h1>Building smarter systems.</h1>
+          <h2>Data-driven solutions for real-world impact</h2>
+          <p>
+            I design practical intelligence for product teams and businesses — from model development to data strategy and scalable AI experiences that create measurable value.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="button primary">View Projects</a>
+            <a href="#contact" class="button secondary">Contact Me</a>
+          </div>
+
+          <div class="hero-stats" aria-label="Career achievements">
+            <div class="stat">
+              <strong>2</strong>
+              <span>Years in ML</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>Projects shipped</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>Focus areas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scene-wrap">
+          <div class="scene-card" id="tilt-card">
+            <div class="profile-panel">
+              <div class="avatar">SHAHABAJ</div>
+              <h3>Shahabaj Pirjade</h3>
+              <p>AI / ML Portfolio</p>
+              <ul class="mini-list">
+                <li><span>Focus</span><strong>ML &amp; data</strong></li>
+                <li><span>Stack</span><strong>Python • SQL • AI</strong></li>
+                <li><span>Interest</span><strong>NLP • analytics</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">About Me</span>
+          <h2>Turning data into product value.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <div class="glass-card">
+              <p>
+                I’m a developer and AI enthusiast focused on turning complex problems into understandable, scalable solutions. My work blends machine learning, analytics, and software engineering to help teams make better decisions and build more intelligent experiences. Recently, I completed a 6-week IBM internship in Big Data and Business Management, which strengthened my understanding of data-driven business decision-making and enterprise analytics.
+              </p>
+            </div>
+            <div class="glass-card">
+              <h3>Core strengths</h3>
+              <div class="chip-list">
+                <span class="chip">Machine Learning</span>
+                <span class="chip">Data Analysis</span>
+                <span class="chip">Model Deployment</span>
+                <span class="chip">Python</span>
+                <span class="chip">Problem Solving</span>
+                <span class="chip">Research</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3>What I bring</h3>
+            <p>
+              A strong mix of technical depth and practical execution. I’m comfortable moving from exploratory analysis into production-ready implementation, always aiming for clarity, reliability, and measurable impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Featured Projects</span>
+          <h2>Selected work</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <span class="project-tag">ML</span>
+            <h3>fraud-detection-system</h3>
+            <p>Built a fraud detection system that leverages machine learning algorithms to identify suspicious patterns and prevent financial losses.</p>
+            <ul>
+              <li>Supervised learning</li>
+              <li>Feature engineering</li>
+              <li>Model evaluation</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-tag">NLP</span>
+            <h3>Text Intelligence</h3>
+            <p>Developed a text analysis flow for extracting meaningful insight from unstructured content using modern NLP techniques.</p>
+            <ul>
+              <li>Preprocessing workflows</li>
+              <li>Classification models</li>
+              <li>Evaluation dashboards</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-tag">Analytics</span>
+            <h3>Decision Dashboard</h3>
+            <p>Created an interactive reporting experience to track key metrics, trends, and patterns for operational decisions.</p>
+            <ul>
+              <li>Data visualization</li>
+              <li>Insight generation</li>
+              <li>Stakeholder reporting</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="project-tag">Web</span>
+            <h3>Food Munch Website</h3>
+            <p>Designed and built a responsive food discovery website with a clean browsing experience and engaging presentation.</p>
+            <ul>
+              <li>Responsive layout</li>
+              <li>Interactive sections</li>
+              <li>GitHub Pages deployment</li>
+            </ul>
+            <a class="project-link" href="https://pirjadeshahabaj-gif.github.io/food-munchwebsite/" target="_blank" rel="noreferrer">View live website &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Skills</span>
+          <h2>Core tools and capabilities</h2>
+        </div>
+
+        <div class="skills-wrap">
+          <div class="skills-panel">
+            <h3>Core technologies</h3>
+            <div class="skill-pills">
+              <span>Python</span>
+              <span>NumPy</span>
+              <span>Pandas</span>
+              <span>Scikit-learn</span>
+              <span>TensorFlow</span>
+              <span>PyTorch</span>
+              <span>SQL</span>
+              <span>Jupyter</span>
+            </div>
+          </div>
+
+          <div class="skills-panel">
+            <h3>Applied strengths</h3>
+            <div class="skill-pills">
+              <span>Predictive Modeling</span>
+              <span>Feature Engineering</span>
+              <span>Model Evaluation</span>
+              <span>Visualization</span>
+              <span>Business Analytics</span>
+              <span>Experimentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Experience</span>
+          <h2>How I work</h2>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-item">
+            <div class="year">IBM</div>
+            <h3>Big Data &amp; Business Management</h3>
+            <p>Completed a 6-week internship focused on big data concepts, business decision-making, analytics workflows, and practical exposure to enterprise problem solving.</p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="year">02</div>
+            <h3>Data &amp; Modeling</h3>
+            <p>I shape quality data, explore patterns, validate assumptions, and refine models around outcomes that matter.</p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="year">03</div>
+            <h3>Delivery</h3>
+            <p>I package insights into practical workflows and maintainable solutions that support clear decisions and long-term use.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Contact</span>
+          <h2>Let’s build something useful.</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p>
+              I’m open to collaborations around AI, ML, data products, and software-driven problem solving. If you have an idea, challenge, or opportunity, I’d love to explore it with you.
+            </p>
+            <div class="contact-link-list">
+              <a href="mailto:pirjadeshahabaj@gmail.com">pirjadeshahabaj.com</a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/pirjadeshahabaj-gif" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <h3>Availability</h3>
+            <p>Open to freelance, contract, and collaborative opportunities.</p>
+            <div class="chip-list">
+              <span class="chip">Remote</span>
+              <span class="chip">Hybrid</span>
+              <span class="chip">On-site</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Shahabaj Pirjade. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const tiltCard = document.getElementById('tilt-card');
+    if (tiltCard) {
+      const rotate = (event) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 18;
+        const rotateX = (0.5 - (y / rect.height)) * 16;
+        tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      };
+
+      tiltCard.addEventListener('pointermove', rotate);
+      tiltCard.addEventListener('pointerleave', () => {
+        tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    }
+  </script>
+</body>
+</html>
