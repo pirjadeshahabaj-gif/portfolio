@@ -54,17 +54,10 @@ For a local development server, run one of these commands from the project direc
 python -m http.server 8000
 ```
 
-Then visit <http://localhost:8000>.
+Then visit https://pirjadeshahabaj-gif.github.io/portfolio/
 
 ## Deployment
 
-This project is suitable for GitHub Pages or any static hosting provider. For GitHub Pages:
-
-1. Push the project to a GitHub repository.
-2. Open the repository's **Settings**.
-3. Select **Pages** under **Code and automation**.
-4. Choose the `main` branch and the `/ (root)` folder as the source.
-5. Save the configuration and open the generated site URL.
 
 ## Project Structure
 
